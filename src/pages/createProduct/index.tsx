@@ -4,14 +4,14 @@ import { useRouter } from "next/router";
 import useGetProduct from "@/hooks/queries/product/useGetOneProduct";
 import Layout from '@/layouts';
 import Head from 'next/head';
-
+import React from 'react';
 export default function CreateProductPage() {
 
   const router = useRouter();
   const { id } = router.query;
 
   const { data: productDetails } = useGetProduct(Number(id));
-  let product = productDetails?.data;
+  const product = productDetails?.data;
   console.log('productDetails', productDetails, product);
   const [form, setForm] = useState({
     title:  '',
@@ -21,7 +21,7 @@ export default function CreateProductPage() {
     imageUrl:  '',
   });
   const [loading, setLoading] = useState(false);
-  const [response, setResponse] = useState<any>(null);
+  // const [, setResponse] = useState<null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({
@@ -42,7 +42,6 @@ export default function CreateProductPage() {
       };
 
       const res = await axios.post('https://api.escuelajs.co/api/v1/products/', payload);
-      setResponse(res.data);
       alert('Product created!');
       console.log('Product created:', res.data);
       setForm({

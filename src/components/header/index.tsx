@@ -11,7 +11,7 @@ export default function Header({ }: HeaderProps) {
   const router = useRouter();
   const logout = () => {
     localStorage.removeItem('authToken');
-    router.push('/login');
+    router.push('/');
   };
   return (
     <div className="fixed top-0 left-0 w-full bg-white h-[70px] px-[120px] py-auto flex justify-between items-center shadow-md z-50">

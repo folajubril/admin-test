@@ -1,83 +1,25 @@
-import React, { useState, useContext, useEffect } from "react";
+import React from "react";
 import useGetProduct from "@/hooks/queries/product/useGetOneProduct";
 import { useRouter } from "next/router";
 import Layout from "@/layouts";
 import Head from "next/head";
-import useStore from "@/store"
 import Image from "next/image";
 
 const ProductDetail = () => {
-  const [cartItem, setCartItem] = useState<any>();
 
   const router = useRouter();
 
   const { id } = router.query;
 
   const { data: productDetails } = useGetProduct(Number(id));
-  let product = productDetails?.data;
+  const product = productDetails?.data;
 
-  const calculateGrandTotal = (products: any) => {
-    return products.reduce(
-      (acc: any, product: { price: any; quantity: any }) =>
-        acc + product.price * product.quantity,
-      0
-    );
-  };
+  
 
-  const addToCart = (product: any) => {
-    setCartItem((prevCart: any | null) => {
-      const newProduct = {
-        products: [
-          ...(prevCart || []),
-          {
-            product: product,
-            total: product.price * product.quantity,
-          },
-        ],
-      };
-      return prevCart
-        ? [
-            ...prevCart,
-            {
-              product,
-              total: calculateGrandTotal([
-                {
-                  ...product,
-                  total: product.price * product.quantity,
-                },
-              ]),
-            },
-          ]
-        : [
-            {
-              product,
-              total: calculateGrandTotal([
-                {
-                  ...product,
-                  total: product.price * product.quantity,
-                },
-              ]),
-            },
-          ];
-    });
-  };
-  const { setCart } = useStore((state) => state);
+ 
 
-  const [quantities, setQuantities] = useState<Record<number, number>>({});
 
-  const increment = (id: number) => {
-    setQuantities((prevQuantities) => ({
-      ...prevQuantities,
-      [id]: (prevQuantities[id] || 1) + 1,
-    }));
-  };
 
-  const decrement = (id: number) => {
-    setQuantities((prevQuantities) => ({
-      ...prevQuantities,
-      [id]: Math.max((prevQuantities[id] || 1) - 1, 1),
-    }));
-  };
   const goBack = () => {
     router.back()
   };  
@@ -146,7 +88,7 @@ const ProductDetail = () => {
   );
 };
 
-export default function ProductPage({ product }: any) {
+export default function ProductPage() {
   return (
     <Layout>
       <Head>

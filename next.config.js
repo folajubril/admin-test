@@ -2,8 +2,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-      domains: ['fakestoreapi.com', 'via.placeholder.com', 'picsum.photos', 'i.imgur.com','plus.unsplash.com', 'images.unsplash.com', 'cdn.pixabay.com', "util-assess.s3.ap-south-1.amazonaws.com"], // Add your external image domain here
-  },
+      remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**', // allows all hostnames (use with caution)
+      },
+    ],  },
 };
 
 module.exports = nextConfig;
