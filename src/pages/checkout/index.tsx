@@ -10,7 +10,7 @@ const CheckoutPage = () => {
     return (
         <Layout>
         <Head>
-          <title>Checkout / Simple - Shopper</title>
+          <title>Ecommerce - Admin</title>
           <meta name="description" content="Ecommerce application" />
         </Head>
         <div className="bg-gray-100 min-h-screen flex items-center justify-center p-6 ">

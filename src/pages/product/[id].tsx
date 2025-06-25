@@ -92,7 +92,7 @@ export default function ProductPage() {
   return (
     <Layout>
       <Head>
-        <title>Simple - Shopper</title>
+        <title>Ecommerce - Admin</title>
         <meta name="description" content="Ecommerce application" />
       </Head>
       <div className="mt-[80px]">

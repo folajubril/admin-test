@@ -12,7 +12,7 @@ export default function Home() {
     <ProductContext.Provider value={productContextValue}>
       <Layout>
         <Head>
-          <title>Simple - Shopper</title>
+          <title>Ecommerce - Admin</title>
           <meta name="description" content="Ecommerce application" />
         </Head>
         <Products/>
