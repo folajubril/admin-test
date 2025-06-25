@@ -34,10 +34,7 @@ export default function ProductCardList({ products }: any) {
   const [modal, setModal] = useState(false);
 
   const showDetail = (id: any) => {
-    router.push({
-      pathname: "/product/detail",
-      query: { id },
-    });
+    router.push(`/product/${id}`);
   };
 
   const editProduct = (id: any) => {
