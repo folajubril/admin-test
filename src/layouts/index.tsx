@@ -2,6 +2,7 @@ import React,{useEffect} from "react";
 import Header from "@components/header";
 import { Poppins } from 'next/font/google';
 import { useRouter } from "next/router";
+import { Analytics } from "@vercel/analytics/next"
 
 const poppins = Poppins({
   subsets: ['latin'], 
