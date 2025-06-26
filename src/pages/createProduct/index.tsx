@@ -42,7 +42,7 @@ export default function CreateProductPage() {
       };
 
       const res = await axios.post('https://api.escuelajs.co/api/v1/products/', payload);
-      alert('Product created!');
+      alert(`Product ${res.data?.title} created!`);
       console.log('Product created:', res.data);
       setForm({
         title: res.data?.title,
@@ -58,7 +58,9 @@ export default function CreateProductPage() {
       setLoading(false);
     }
   };
-
+  const goBack = () => {
+    router.back()
+  };  
 
   useEffect(() => {
     if (id && product) {
@@ -77,8 +79,30 @@ export default function CreateProductPage() {
         <title>Create / Edit - Product</title>
         <meta name="description" content="Ecommerce application" />
       </Head>
-      <div className='flex mt-[100px] items-center justify-center'>
-        <div className="flex flex-col justify-center items-center h-fit py-[10px] px-[20px] max-w-[560px]" >
+      <>
+    
+      <div className='flex mt-[100px] items-center justify-center w-full'>
+      <div
+        onClick={goBack}
+        className="flex mb-[10px]items-center space-x-2 cursor-pointer border-gray rounded-md p-[6px]"
+      >
+        <svg
+          className="w-6 h-6 text-gray-800"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M15 19l-7-7 7-7"
+          ></path>
+        </svg>
+        <span className="text-gray-800">Back</span>
+      </div>
+        <div className="flex flex-col h-fit py-[10px] px-[20px] w-[60%]" >
           <h2 className='text-left'>Create Product</h2>
           <br />
           <label className='text-sm text-gray-600 text-left'>Title</label>
@@ -131,6 +155,7 @@ export default function CreateProductPage() {
          
         </div>
       </div>
+      </>
     </Layout>
   );
 }

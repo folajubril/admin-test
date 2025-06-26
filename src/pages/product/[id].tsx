@@ -14,12 +14,6 @@ const ProductDetail = () => {
   const { data: productDetails } = useGetProduct(Number(id));
   const product = productDetails?.data;
 
-  
-
- 
-
-
-
   const goBack = () => {
     router.back()
   };  

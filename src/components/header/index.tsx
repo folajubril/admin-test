@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import Logo from "@components/svgs/logo";
-import ShoppingCartButton from '@components/shoppingCartButton'
+import ShoppingCartButton from '@/components/AddProductButton'
 import { useRouter } from "next/router";
 
 interface HeaderProps {
